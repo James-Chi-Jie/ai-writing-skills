@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Technical Explainer
@@ -68,3 +68,18 @@ Depending on the requested stage, produce a topic thesis, diagram-aware outline,
 ## Concrete worked example
 
 See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding gap involving RNN parameter sharing.
+
+## Additional rules validated during RNN V2
+
+### Explain mechanism with verifiable computation
+- When claiming that a mechanism enables memory, feature extraction, or context modeling, explicitly demonstrate the computation that produces the effect. Do not stop at a definition or an abstract formula.
+- Use the smallest numerical example or runnable code that demonstrates the effect; trace intermediate values and validate arithmetic.
+- Clearly mark deliberate simplifications (e.g. omission of nonlinearity and bias). Distinguish exact computational traceability from the difficulty of interpreting learned semantic representations.
+- If the writer's real questions reveal a missing logical step after V1, restructure the draft at that step rather than appending unrelated extra content.
+
+### Editorial numbering versus delivered image file names
+- **Inside images:** never place editorial figure numbering such as "图1", "图2", or "Figure 3" on the canvas. Keep actual time-step numbers such as "第1步", "t=1" when they carry technical meaning.
+- **For delivered image files:** always name illustrations in article order using **`图01-简短主题.png`, `图02-简短主题.png`**, etc. Use zero-padded two-digit indices so file sorting works for ten or more images. Descriptive themes should be concise.
+- Store the ordinal in the filename and article caption/reference layer, not in the artwork, so graphics can be reused in other articles.
+- When adding, removing, or reordering figures, update impacted image filenames, Markdown image paths and ZIP/delivery manifest together; confirm that every referenced file exists.
+- An image primarily exists to explain one concrete point. Prefer correct arrows, indices, shapes and simple labels over text-heavy decorative diagrams.
