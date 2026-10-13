@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Technical Explainer
@@ -83,3 +83,13 @@ See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding g
 - Store the ordinal in the filename and article caption/reference layer, not in the artwork, so graphics can be reused in other articles.
 - When adding, removing, or reordering figures, update impacted image filenames, Markdown image paths and ZIP/delivery manifest together; confirm that every referenced file exists.
 - An image primarily exists to explain one concrete point. Prefer correct arrows, indices, shapes and simple labels over text-heavy decorative diagrams.
+
+## Additional rules validated during Transformer outline and sections 1–2 (2026-10-13)
+
+### Progressive depth without mandatory formula-first exposition
+- For a technically literate reader new to the subject, introduce the concrete problem and information flow **before** symbols or large equations. A reader's math background is a constraint on presentation, not a reason to remove technical accuracy.
+- Distinguish **author-side verification** from **reader-facing exposition**: the writer should check numerical examples, dependencies, and diagram arrows, but the main narrative can show a verified mechanism with a small diagram and ordinary language. Put optional step-by-step arithmetic in an appendix when it would interrupt the argument.
+- Avoid two opposite failures: merely naming a mechanism without showing how it acts, and front-loading derivations before the reader knows what question they answer.
+- Use a single recurring example to link adjacent sections, with each section answering the question left open by the previous one. Introduce at most the necessary new terms at each step.
+- Apply a relevance filter to intermediate technologies: mention them briefly if needed for accuracy, but avoid teaching an entire side architecture when the article's core question does not depend on it. Example: LSTM/GRU may be acknowledged without a gate-by-gate lesson in a Transformer introduction.
+- This is a **conditional technique**, not a prohibition on mathematics. Use formulas prominently when they are central to the reader's goal, and keep the underlying calculation available for audit.
