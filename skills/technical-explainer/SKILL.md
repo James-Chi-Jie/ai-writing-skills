@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
 ---
 
 # Technical Explainer
@@ -93,3 +93,18 @@ See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding g
 - Use a single recurring example to link adjacent sections, with each section answering the question left open by the previous one. Introduce at most the necessary new terms at each step.
 - Apply a relevance filter to intermediate technologies: mention them briefly if needed for accuracy, but avoid teaching an entire side architecture when the article's core question does not depend on it. Example: LSTM/GRU may be acknowledged without a gate-by-gate lesson in a Transformer introduction.
 - This is a **conditional technique**, not a prohibition on mathematics. Use formulas prominently when they are central to the reader's goal, and keep the underlying calculation available for audit.
+
+## Additional rules distilled from Transformer FFN explanation review (2026-10-16)
+
+### Explain the next component with a visible handoff, not a new label
+
+- **Check explanatory slope before naming a mechanism.** Start with a concrete example the reader already understands. State what the previous component has produced, show the remaining question, then introduce what the next component *does to that output*. Name the component after its role is intelligible.
+- **Do not explain unfamiliar jargon with different unfamiliar jargon.** A phrase such as "position-wise nonlinear feature transformation" is a useful technical label *after* explanation, not a self-sufficient explanation of why FFN is present. First show input, action, and output in ordinary language; then map those steps to precise terms.
+- **Favor a visible work handoff:** previous step → its output → next useful operation → next step's output. A simple everyday analogy may convey the process faster than a premature proof or formula. The analogy should be discarded or qualified where it misstates what the components can actually do.
+- **Separate workflow intuition, architectural motivation, and mathematical necessity.** Showing what a component contributes does not prove the architecture cannot work without it. Do not fabricate an exclusive deficiency in the previous component merely to justify the next one.
+- **Preserve boundaries while staying readable.** Example: "Attention lets token positions gather information; FFN processes each position's current representation" is a helpful first-pass mental model. It does **not** mean Attention cannot transform features, FFN performs semantic reasoning alone, or Attention-only networks are necessarily linear and incapable of learning complex relationships.
+- **React to comprehension feedback, not just text polish.** If the author repeatedly says "I still don't understand why it exists," reconsider the question and explanatory order. More definitions, formulas, or an unrelated example may increase cognitive load without closing the causal gap. Offer the smallest connected illustration first, and deepen only where the remaining question genuinely requires it.
+
+**Editorial checkpoint:** For each new module, can the reader answer (1) What did the last step actually output? (2) What new operation is useful next? (3) What goes in and comes out? (4) Which parts of the explanation are teaching metaphors rather than factual capability limits?
+
+**Evidence scope:** This guidance is distilled from author feedback comparing multiple FFN explanations. The easier-to-follow *explanation pattern* was identified; this does not establish that the author's underlying technical uncertainty is fully resolved, nor does it mandate one analogy for all articles.
