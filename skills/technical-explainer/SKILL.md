@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.4.0"
+  version: "0.5.0"
 ---
 
 # Technical Explainer
@@ -108,3 +108,22 @@ See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding g
 **Editorial checkpoint:** For each new module, can the reader answer (1) What did the last step actually output? (2) What new operation is useful next? (3) What goes in and comes out? (4) Which parts of the explanation are teaching metaphors rather than factual capability limits?
 
 **Evidence scope:** This guidance is distilled from author feedback comparing multiple FFN explanations. The easier-to-follow *explanation pattern* was identified; this does not establish that the author's underlying technical uncertainty is fully resolved, nor does it mandate one analogy for all articles.
+
+## Plain-language-first exposition for algorithm beginners (2026-10-16)
+
+### Reader baseline and narrative slope
+
+- **Treat readers and the author as beginners in algorithms/ML unless the specific concept has already been established**, even if they have years of software-development experience. Programming experience is not assumed knowledge of vectors, neural networks, projections, gradients, or model training.
+- **Everyday situation → concrete remaining question → plain-language operation → name the technique → only the necessary technical detail.** Do not begin with a glossary, a technical definition, or a formula.
+- **One unfamiliar concept at a time.** Before writing any sentence with two or more unfamiliar terms, rewrite it so the reader can picture the action using already established concepts. When a term becomes necessary, define it in a short everyday sentence at first use.
+- **Use a process the reader can follow.** Carry the same example across modules; say what happened *before*, what actually happens *during*, and what changes *after*. Show the useful input and output, not just arrows connecting boxes or role labels.
+- **Plain words first, precision in a light second layer.** Put implementation details, optional mathematics, exception cases, and lengthy technical caveats in a short aside or optional appendix when they interrupt the main storyline. Do not omit correctness; avoid misleading absolutes and add one focused qualification where the analogy could otherwise be wrong.
+- **Analogies must help, not legislate capabilities.** An analogy such as "Attention is a meeting; FFN is processing your notes afterward" is useful for the handoff, but does not prove that Attention never transforms representations or that FFN alone understands relationships. Never claim attention-only systems are necessarily linear, that particular heads have fixed semantic jobs, or that an example number is a real learned attention weight.
+- **Test for cognitive load:** After each paragraph, ask whether an algorithm beginner can explain in ordinary words what new action just happened *without needing to learn another term first*. If not, simplify the explanation or postpone the detail instead of adding definitions.
+- **Keep diagrams equally beginner-friendly:** visually mark starting information, the action, and the result. Prefer one clear causal change over many arrows, attention weights, labels, and decorative components on one canvas.
+
+### Editorial acceptance test
+
+A draft passes this style check when someone unfamiliar with algorithms can answer: **What was the problem? What did we try? What changed after this step? Why is the next step useful?** If the author says an explanation remains difficult, treat that as a failed comprehension test and revise the *explanatory sequence*, not merely its vocabulary.
+
+This is a reader-facing **default**, not a ban on technical detail: mathematical rigor and source checks remain mandatory in author-side validation, and mathematics belongs prominently in the article when it is the actual subject.
