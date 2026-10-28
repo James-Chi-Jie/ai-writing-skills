@@ -12,7 +12,8 @@
 
 ## 当前 Skills
 
-- [`technical-explainer`](skills/technical-explainer/SKILL.md)：问题驱动的技术解释与图文写作；适用于教程、技术博客、架构文章。
+- [`technical-explainer`](skills/technical-explainer/SKILL.md)：问题驱动的技术解释与图文写作；负责文章结构与插图教学目标。
+- [`technical-diagram`](skills/technical-diagram/SKILL.md)：技术原理图设计、生图、技术审图、作者确认与版本来源追溯。
 
 ## 目录结构
 
@@ -25,15 +26,20 @@ skills/
       rnn-case-study.md
     assets/
       article-outline.md
+  technical-diagram/
+    SKILL.md
+    references/
+      acceptance-and-provenance.md
 
 evals/
   technical-explainer.md
+  technical-diagram.md
 CHANGELOG.md
 ```
 
 ## 未来候选能力（未实现）
 
-只有当真实项目中反复出现独立、可测试的任务时才拆分，例如：`technical-diagram`、`health-education-writing`、`platform-adaptation`、`fact-checking`。
+只有当真实项目中反复出现独立、可测试的任务时才拆分，例如：`health-education-writing`、`platform-adaptation`、`fact-checking`。技术配图已基于真实 LLM 图文审查案例独立为 `technical-diagram`。
 
 ## 使用说明
 
