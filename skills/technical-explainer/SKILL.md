@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
 ---
 
 # Technical Explainer
@@ -47,7 +47,7 @@ For every planned section, specify:
 - Diagram purpose (one learning obstacle per figure)
 - What must be exact (arrows, labels, units, formulas)
 
-Do not generate a large batch of diagrams before the key mechanism and article structure are stable.
+Do not generate a large batch of diagrams before the key mechanism and article structure are stable. For actual figure creation, auditing, approval, or packaging, hand off each figure's brief to `technical-diagram` (when available); keep the article-level narrative and figure placement here.
 
 ### 5. Draft natural prose
 
