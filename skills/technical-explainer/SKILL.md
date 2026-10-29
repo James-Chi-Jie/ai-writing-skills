@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.5.1"
+  version: "0.5.2"
 ---
 
 # Technical Explainer
@@ -60,6 +60,20 @@ Do not generate a large batch of diagrams before the key mechanism and article s
 ### 6. Validate and revise
 
 Check technical correctness, reader comprehension, figure logic, cross-article linkage, and the transition to the next topic. Use [writing-checklist.md](references/writing-checklist.md). After the author raises a new question, map the misunderstanding to the right section and update both prose and relevant figure rather than treating it as an unrelated Q&A.
+
+## Collaborative reasoning before drafting (validated in Tokenization discussion, 2026-10-29)
+
+When the author is learning the topic as part of writing, use **co-reasoning**, not a one-way lecture or a forced Q&A exam:
+
+- Start from one concrete puzzle; define the variables and baselines before presenting a calculation. Invite the author to infer the next step, but if they cannot follow the example, **stop the quiz and repair the missing premise**.
+- Treat repeated “I still don't understand” as diagnostic data, not a request for more volume. Identify whether the obstacle is an undefined concept, two quantities being confused, a missing counterexample, or a changed variable. Explain that exact gap with the smallest before/after comparison; then return to the thread.
+- Explicitly distinguish **the total number of entries in a vocabulary** from **the number of tokens used to encode one string** (the Tokenization case). More generally, keep *resource capacity* and *per-input workload* distinct; fix other conditions when comparing costs.
+- When the author's reasoning is partly correct, preserve the supported claim and revise only the false inference; distinguish hypothetical arithmetic, actual experimental output, and unverified claims. An experiment on a toy distribution is not proof of production behavior.
+- After the author reconstructs the causal chain, promote their real questions into article acceptance checks and diagram briefs. Record the misunderstanding, the corrective example, and the specific section it changes. Do not quote the discussion wholesale as an article.
+- Ask at most one useful understanding check at a time, and do not insist on an answer after the author indicates understanding or asks to move on.
+- Prefer **discussion → minimal test → joint interpretation → prose → figure review** where the author is learning the topic. This ordering is conditional; it does not require every already-understood article to become a dialogue.
+
+See [tokenization-coauthoring-case.md](references/tokenization-coauthoring-case.md) for the observed failure modes, successful repairs, and evidence limitations.
 
 ## Artifacts
 
