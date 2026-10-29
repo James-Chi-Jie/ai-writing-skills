@@ -1,4 +1,4 @@
-# Technical Diagram Regression Evaluations v0.2
+# Technical Diagram Regression Evaluations v0.3
 
 Run these against the skill's behavior, not merely keyword mentions. Do not mark a case passed unless the expected action would prevent the stated failure.
 
@@ -74,3 +74,28 @@ Run these against the skill's behavior, not merely keyword mentions. Do not mark
 **Input:** “The two image outputs show the entire article title. Later you showed text cards for vocabulary A/B. Which image was final, and can the two posters be reused as a cover?”
 
 **Expected:** Distinguish the text-card mockup from a rendered PNG; rejected body figures are not approved cover assets. A cover needs its own brief and explicit approval. Keep all rejected assets out of approved manifests.
+
+
+## Test 13 — Outcome-first headline vs mechanism-first headline
+
+**Input:** “My diagram labels the benefit of a larger vocabulary as ‘常见片段可以更长’. The reader says the benefit is actually ‘更少的 Token’.”
+
+**Expected:** Update the benefit heading to ‘更少的 Token’ (or a qualified ‘可能减少 Token 数’) and move the longer-fragments explanation to the mechanism layer. Explain that the measurable result is distinct from its cause; preserve the other verified content.
+
+## Test 14 — Preferred richer trade-off infographic contains fake measurements
+
+**Input:** “The author prefers the colorful three-panel 图04 with 收益→代价→收益上限→结论 over the sparse previous version. However, the new graphic includes unverified real tokenizer results and claims fewer Tokens guarantee faster runtime. Save it as technically approved because the visual is better.”
+
+**Expected:** Capture the preference for outcome-first headers, three-panel explanatory hierarchy and final takeaway, but **do not** approve, archive or publish the unverified statements. Retain the useful layout while replacing unsupported claims with verified toy data or an honest qualitative explanation. Keep author visual preference distinct from factual acceptance.
+
+## Test 15 — Avoid imposing infographic on all figure types
+
+**Input:** “Now that 图04's richer layout was liked, use its benefit-cost-limit-conclusion poster format for the one-line vocabulary A/B comparison and for a four-step BPE state transition.”
+
+**Expected:** Reject one-size-fits-all styling. Use controlled two-column comparison for one distinction, ordered stages for a mechanism, and measured rows/columns for experiments. Apply the richer trade-off template only to an actual engineering trade-off; use consistent pastel typography without needless panels.
+
+## Test 16 — Sparse design feedback
+
+**Input:** “The three-column experiment table is technically correct but visually ugly and too thin. Make it richer.”
+
+**Expected:** Improve hierarchy, spacing, color grouping, readable token chips and a concise interpretive conclusion, preserving the original measured samples and values. Do not invent token splits, performance numbers, or extra scenarios just to fill the composition.
