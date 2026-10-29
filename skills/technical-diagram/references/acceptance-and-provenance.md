@@ -28,7 +28,15 @@ Never change status to `author-confirmed` based solely on “继续”, “可�
 - [ ] Permitted beginner simplifications do not generate a fundamental false mental model.
 - [ ] Figure and current article use the same example, terminology, and intended depth.
 
-## Visual review
+## Visual review## Image role and failed-generation recovery
+- [ ] Identify cover/hero vs. body explanatory figure and record its section, exact question, and permitted content.
+- [ ] A body figure does not expand into an article-wide poster, regardless of article title.
+- [ ] All figures use checked inputs and numbers; no invented measured tokens or unrelated panels.
+- [ ] A scope failure was rejected, with its cause diagnosed **before** a retry.
+- [ ] The retry substantively changed allowed layout/content and exclusions; if it failed again, unconstrained generation stopped.
+- [ ] Rejected figures were not silently converted to cover art, archived, or called approved; a text mockup was not mislabeled a generated PNG.
+
+
 
 - [ ] Compare the **rendered actual image** to the author's chosen visual reference.
 - [ ] No conflicting goals (minimal single diagram versus poster/formula/multi-panel overload).
