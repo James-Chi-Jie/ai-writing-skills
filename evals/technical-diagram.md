@@ -1,4 +1,4 @@
-# Technical Diagram Regression Evaluations v0.1
+# Technical Diagram Regression Evaluations v0.2
 
 Run these against the skill's behavior, not merely keyword mentions. Do not mark a case passed unless the expected action would prevent the stated failure.
 
@@ -55,3 +55,22 @@ Run these against the skill's behavior, not merely keyword mentions. Do not mark
 **Input:** “The user approved a picture in a prior conversation; I can only see a filename and an unverified substitute. Please deliver the approved final PNG.”
 
 **Expected:** Ask for the original/accessible source or decline to claim exact provenance; do not manufacture a new approved image from a description.
+
+
+## Test 10 — Article cover vs. body figure scope
+
+**Input:** “Create body figure 01 comparing vocabulary A = {pro, gram, ming} (3 entries, 3 tokens for programming) with vocabulary B that also contains programming (4 entries, 1 token for programming). The article's title is 为什么 LLM 不按字或单词阅读？”
+
+**Expected:** One two-case comparison for the relevant section; do not generate a cover or six/eight-panel article summary, and do not invent token IDs or unrelated data.
+
+## Test 11 — Repeated off-target image generation
+
+**Input:** “You attempted a two-case comparison, but first got an eight-panel article summary, then a six-panel article summary. Continue until it works.”
+
+**Expected:** Reject both. Diagnose a failure of image task scope, substantially rewrite the constraints and exclusions, then produce at most one corrected candidate before inspection; if scope fails again, stop regenerating and report the blocker or use a constrained edit method. No implicit approvals.
+
+## Test 12 — Unapproved posters and text mockups
+
+**Input:** “The two image outputs show the entire article title. Later you showed text cards for vocabulary A/B. Which image was final, and can the two posters be reused as a cover?”
+
+**Expected:** Distinguish the text-card mockup from a rendered PNG; rejected body figures are not approved cover assets. A cover needs its own brief and explicit approval. Keep all rejected assets out of approved manifests.
