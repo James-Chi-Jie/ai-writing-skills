@@ -1,5 +1,7 @@
 ---
 name: technical-diagram
+metadata:
+  version: "0.1.2"
 description: Plan, generate, revise, audit, and deliver accurate educational diagrams for technical blogs, tutorials, and AI/ML or software-engineering explainers. Use when an article needs a mechanism, data-flow, architecture, comparison, token/process, or numerical illustration; when reviewing a generated figure; or when assembling approved figures into an article. Enforce the author's chosen visual style, technical correctness, explicit approval, and source-file/version traceability.
 ---
 
@@ -24,6 +26,45 @@ Do not turn a planned body figure into a summary poster based on the article tit
 5. A text-card sketch or UI mockup shown to explain the target is not a generated or approved PNG; identify it as a mockup.
 
 **Regression example:** Tokenization article figure 01 is a two-case toy comparison: vocabulary A has `pro`, `gram`, `ming` (3 entries), so encoding `programming` uses 3 Tokens; B adds `programming` (4 entries), so the same string uses 1 Token. The generated eight-panel and six-panel article summaries were both rejected. They do not become covers or approved figures by default.
+
+## Explanatory infographic design system (Tokenization figure 04, 2026-10-29)
+
+The author preferred the *visual hierarchy and richer teaching structure* of the later figure 04 over an earlier sparse comparison. This is a **visual preference, not approval of the later figure's unverified token examples or performance claims**. Preserve the prior image-role/scope gate: a visually rich body figure still addresses **one central question**.
+
+### Choose a layout by the reader's task
+
+- **Single distinction:** two aligned cards or a controlled comparison; e.g., vocabulary *entry count* versus *encoded Token count*.
+- **Mechanism over time:** numbered sequence with exact state transitions; e.g., two rounds of BPE merging.
+- **Measured results:** compact rows/columns with identical test samples, verified values and labeled environment; do not turn toy experimental data into an invented production example.
+- **Engineering trade-off / why not maximize X:** prefer **benefit → cost → limit/counterexample → takeaway**. Three coordinated panels and a final takeaway are useful *only when each panel is needed to answer the same question*.
+
+Choose the lightest structure that actually teaches the subject. Do not force four panels or a poster onto a simple single-concept image.
+
+### Headings should name the outcome, not just the mechanism
+
+- Use **outcome language in the primary module heading**, then explain the mechanism beneath it: e.g., `收益：更少的 Token`, *because* familiar fragments may be represented as longer units.
+- Do not mistakenly label a cause such as `片段更长` as the benefit itself.
+- Distinguish a demonstrated result from a possible outcome. Prefer `可能减少 Token 数` to an absolute claim when outcomes depend on tokenizer and corpus.
+- If a heading is technically accurate but does not convey **why the reader should care**, revise it before improving decoration.
+
+### Visual hierarchy and restrained richness
+
+- Default for this blog: light background, modern flat infographic, subtle pastel cards, readable Chinese sans-serif hierarchy, generous whitespace, consistent alignment and rounded shapes; restrained color-coding by purpose.
+- Header establishes the single question; each panel has an **outcome-first mini-title**, a compact grounded example or simple mechanism, and at most a short explanation; bottom takeaway ties the causal argument together.
+- Use meaningful chips/arrows, visual contrast and occasional small icons to guide reading. Do not add ornamental charts, unrelated figures, stock-style motifs or dense boxed paragraphs merely to fill space.
+- When a comparison is visually thin, improve the explanation of *why*, the boundary condition or the controlled counterexample **before** considering additional illustrative data. Improve density without changing the scope.
+- Evaluate legibility at article width and mobile. Do not place editorial labels like `图04` on canvas.
+
+### Evidence gate remains stricter than visual preference
+
+- A visually preferred output may contain wrong or invented content. Independently audit **every** displayed tokenization, count, model dimension, memory/latency claim and causal arrow against the source or marked hypothetical calculation.
+- Never use fabricated real Token IDs or previously unrun tokenizations to make a richer infographic; toy examples must be marked as such. If one panel cannot be verified, remove or replace that panel **without silently reverting the author's preferred layout**.
+- Do not infer from a larger vocabulary that end-to-end inference is always slower, or that fewer Tokens always reduce total runtime/cost; specify the model/output-layer assumptions and distinguish parameter arithmetic from real benchmarks.
+- Keep visual acceptance, technical acceptance, author acceptance and publication as separate gates; an author saying a *version looks better* establishes a stylistic preference, not technical sign-off on unverified numbers.
+
+### Comparison-based improvement loop
+
+When an author says `这一版更好`, record **what improved** (e.g., benefit heading changed from `常见片段更长` to `更少的 Token`, better panel hierarchy and takeaway), **what remains defective** (e.g., invented sample segmentation), and **which rule applies to future figures**. Compare actual rendered candidates rather than inferring from prompts. Preserve approved structure across later revisions and edit only the failed content when feasible.
 
 ## Required inputs and decision record
 
