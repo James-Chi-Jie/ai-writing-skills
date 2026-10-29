@@ -7,6 +7,24 @@ description: Plan, generate, revise, audit, and deliver accurate educational dia
 
 Create diagrams that help an algorithm beginner understand one real mechanism. A convincing-looking image is not evidence of technical correctness or author approval. Coordinate with `technical-explainer`: it owns the article's reasoning and figure placement; this skill owns a figure's visual brief, generation, review, approval, and delivery.
 
+## Image role and scope gate (Tokenization lesson, 2026-10-29)
+
+Before any generation, classify the asset explicitly:
+- **Cover / hero:** represents the article's overall topic, with an independently approved cover brief.
+- **Body explanatory figure:** belongs to one specific paragraph, answers one learning question, and depicts only the smallest necessary mechanism or controlled comparison.
+
+Do not turn a planned body figure into a summary poster based on the article title or full draft. A body-figure generation brief must specify the exact allowed content (example, numbers, labels, layout), its article section, and excluded sections/panels. An article title is not authorization to create a cover.
+
+### Mandatory recovery when a generated image misses the target
+
+1. Mark the image **rejected / needs-revision**; identify the exact scope error and do not archive, publish or silently repurpose it as a cover.
+2. Change the **substance** of the next generation task: one role, one teaching point, fixed validated example, explicit allowed layout and forbidden extra content. A rephrased version of the same broad prompt is not a meaningful correction.
+3. Re-check the corrected brief against technical evidence. Do not add unsupported numbers, purported real tokenizer outputs or new panels merely for aesthetics.
+4. Generate one corrected candidate and inspect the actual rendering. If it repeats the same scope failure, **stop unconstrained regeneration** and report the blocker or switch to a constrained edit/layout method.
+5. A text-card sketch or UI mockup shown to explain the target is not a generated or approved PNG; identify it as a mockup.
+
+**Regression example:** Tokenization article figure 01 is a two-case toy comparison: vocabulary A has `pro`, `gram`, `ming` (3 entries), so encoding `programming` uses 3 Tokens; B adds `programming` (4 entries), so the same string uses 1 Token. The generated eight-panel and six-panel article summaries were both rejected. They do not become covers or approved figures by default.
+
 ## Required inputs and decision record
 
 Before generating, establish a figure record:
