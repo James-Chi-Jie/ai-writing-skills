@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.5.2"
+  version: "0.5.3"
 ---
 
 # Technical Explainer
@@ -57,6 +57,23 @@ Do not generate a large batch of diagrams before the key mechanism and article s
 - Keep caveats proportional. Examples illustrate common uses; do not falsely state exclusivity (e.g., CNN only images, RNN only text).
 - If the reader's core question remains unanswered, revise before polishing tone.
 
+### Mandatory full-text approval gate before image generation
+
+Figure planning and actual image creation are separate stages.
+
+- During outlining, it is fine to record a **text-only figure plan**: the reader question, the paragraph it may support, and the intended teaching point. This is planning, not permission to generate.
+- Before any image-generation or image-editing call, present the **complete article text** to the author for holistic review. Complete text includes the title, every section and paragraph, formulas, worked examples, transitions, figure references/captions where applicable, and the conclusion.
+- Iterate on the prose until the author explicitly confirms the full-text context/version. A request to “continue” while drafting, approval of an outline, or approval of one section is not approval of the complete article.
+- Before this approval, previews must be text-only. Do not create image candidates, edit figures, or insert unapproved images into a preview and ask the author to judge them without the full article context.
+- After approval, freeze or identify the approved text version, then finalize figure briefs against that exact version and hand off to technical-diagram for generation, audit, and author approval.
+- If later prose edits materially change a figure's teaching point, numbers, labels, order, or surrounding argument, pause the affected figure work and reconfirm the changed text context before revising the image.
+- A figure brief may be drafted earlier in plain text, but **no actual image generation starts before full-text approval**.
+
+### Default delivery: no ZIP unless requested
+
+- Do not create ZIP archives as a routine part of drafting, review, image generation, or handoff.
+- Deliver the requested Markdown, single HTML preview, or individual image directly.
+- Create a ZIP or other bundle only when the author explicitly asks for a package or when a specific downstream system demonstrably requires one and the author has agreed.
 ### 6. Validate and revise
 
 Check technical correctness, reader comprehension, figure logic, cross-article linkage, and the transition to the next topic. Use [writing-checklist.md](references/writing-checklist.md). After the author raises a new question, map the misunderstanding to the right section and update both prose and relevant figure rather than treating it as an unrelated Q&A.
