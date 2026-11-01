@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.5.3"
+  version: "0.5.4"
 ---
 
 # Technical Explainer
@@ -100,6 +100,14 @@ Depending on the requested stage, produce a topic thesis, diagram-aware outline,
 
 See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding gap involving RNN parameter sharing.
 
+## Semantic image naming (2026-11-01)
+
+- Do not put editorial sequence numbers such as `图01`, `图02`, or `Figure 3` on the image canvas, in asset filenames, or in article captions/references.
+- Name image assets by stable subject, e.g. `parameter-update.png`, `shared-vs-independent-weights.png`, or `training-vs-inference.png`. Do not encode article position or display order in the filename.
+- The Markdown document determines display order through the location of each image reference. Inserting, deleting, or moving one image must not require renaming other assets or changing their paths.
+- Track candidate/final status, revision, source provenance, and SHA-256 in the article plan or manifest, not through ordinal filenames. Use descriptive identifiers when multiple assets address related topics.
+- Preserve numbers that carry actual technical meaning, such as time steps, layer indices, sequence positions, dimensions, or measured values.
+
 ## Additional rules validated during RNN V2
 
 ### Explain mechanism with verifiable computation
@@ -109,12 +117,12 @@ See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding g
 - If the writer's real questions reveal a missing logical step after V1, restructure the draft at that step rather than appending unrelated extra content.
 
 ### Editorial numbering versus delivered image file names
-- **Inside images:** never place editorial figure numbering such as "图1", "图2", or "Figure 3" on the canvas. Keep actual time-step numbers such as "第1步", "t=1" when they carry technical meaning.
-- **For delivered image files:** always name illustrations in article order using **`图01-简短主题.png`, `图02-简短主题.png`**, etc. Use zero-padded two-digit indices so file sorting works for ten or more images. Descriptive themes should be concise.
-- Store the ordinal in the filename and article caption/reference layer, not in the artwork, so graphics can be reused in other articles.
-- When adding, removing, or reordering figures, update impacted image filenames, Markdown image paths and ZIP/delivery manifest together; confirm that every referenced file exists.
-- An image primarily exists to explain one concrete point. Prefer correct arrows, indices, shapes and simple labels over text-heavy decorative diagrams.
 
+- Do not use editorial sequence numbers in the canvas, asset filename, article caption, or Markdown reference. Use a stable semantic filename and let Markdown placement determine display order.
+- When adding, removing, or reordering figures, update only the relevant Markdown insertion point and its descriptive manifest entry; do not rename unrelated image assets.
+- Keep revision status, source provenance, and content hashes in the plan/manifest. Do not use figure numbers as identity or provenance.
+- Preserve meaningful technical numbers such as time steps, sequence positions, dimensions, layer indices, and measured values.
+- An image primarily exists to explain one concrete point. Prefer correct arrows, indices, shapes and simple labels over text-heavy decorative diagrams.
 ## Additional rules validated during Transformer outline and sections 1–2 (2026-10-13)
 
 ### Progressive depth without mandatory formula-first exposition
