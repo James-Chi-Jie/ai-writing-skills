@@ -1,7 +1,7 @@
 ---
 name: technical-diagram
 metadata:
-  version: "0.1.2"
+  version: "0.1.3"
 description: Plan, generate, revise, audit, and deliver accurate educational diagrams for technical blogs, tutorials, and AI/ML or software-engineering explainers. Use when an article needs a mechanism, data-flow, architecture, comparison, token/process, or numerical illustration; when reviewing a generated figure; or when assembling approved figures into an article. Enforce the author's chosen visual style, technical correctness, explicit approval, and source-file/version traceability.
 ---
 
@@ -138,6 +138,11 @@ Use these when relevant, not as universal depiction rules:
 - In causal attention, position 6 must not read positions 7–9. An illustrative weight is not a measured probability.
 - Do not insert training as a mandatory step in a single inference call.
 
+## Article-context and packaging gates
+
+- This skill owns image creation and review, but it does **not** decide when the article is ready for image generation. Before creating or editing a candidate, verify that the author has explicitly confirmed the complete article text version that the figure is meant to support. If that confirmation is absent, stop at a text-only figure brief and ask for the text gate to be completed.
+- Re-check the approved article section and its surrounding argument when writing each figure brief. A title or isolated paragraph is not enough context for a body figure.
+- Do not create ZIP archives by default. Deliver individual approved/candidate image files and the requested preview directly. Package them only when the author explicitly requests a ZIP or another agreed bundle.
 ## Deliverables
 
 At the requested stage, provide a figure brief, one candidate image, a succinct review table, or a final manifest plus article-ready PNG files. State unresolved blockers and exact approval status. Treat each actual user correction as a reusable regression test, not a reason to add vague style advice.
