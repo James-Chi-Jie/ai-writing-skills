@@ -1,7 +1,7 @@
 ---
 name: technical-diagram
 metadata:
-  version: "0.1.3"
+  version: "0.1.4"
 description: Plan, generate, revise, audit, and deliver accurate educational diagrams for technical blogs, tutorials, and AI/ML or software-engineering explainers. Use when an article needs a mechanism, data-flow, architecture, comparison, token/process, or numerical illustration; when reviewing a generated figure; or when assembling approved figures into an article. Enforce the author's chosen visual style, technical correctness, explicit approval, and source-file/version traceability.
 ---
 
@@ -103,7 +103,7 @@ If a crucial reference or approved file is unavailable, ask for it. Do not claim
 - Default to **one candidate for one teaching question**; make multiple variations only on explicit request.
 - Use the author's already accepted reference and requested file format. For James's current LLM blog series, the latest approved direction is pastel, rounded, modern flat educational illustration with clear Chinese hierarchy, small everyday objects, and PNG delivery. **Do not produce programmatic box-flowchart SVGs or deliver SVG for that series unless James explicitly changes the decision.** This preference is project-specific, not a universal ban on SVG.
 - If revising an accepted visual, edit that same image with the smallest needed change. Never silently regenerate, substitute a new style, or use a new filename to hide a changed visual.
-- Keep editorial numbering (e.g. `图01`) out of the canvas; preserve numbers that explain a real step or time index.
+- Keep editorial sequence numbering (e.g. `图01`) out of the canvas, filenames, captions, and Markdown references; preserve numbers that explain a real step or time index. Use a stable semantic filename for each image.
 
 **Gate C — Visual:** verify the rendered candidate itself: actual Chinese characters, numerical text, arrows, legibility at article width/mobile, unclipped labels, layout, palette, and reference-style match. Do not rely on prompt text or successful export alone.
 
@@ -121,12 +121,19 @@ Show the candidate and concrete findings to the author. Fix blockers, then re-in
 ### 5. Assemble, preserve, and deliver
 
 - Maintain a manifest mapping article figure ID, exact source filename, content digest (prefer SHA-256), visual description, technical-review status, author-approval status, final filename, and Markdown path.
-- Reuse the exact confirmed bytes. Before packaging, compare filename **and hash and actual visual** to the approved original; never replace a pure overview with a different three-layer engineering diagram simply because both are titled “图01”.
-- When final order is known, name PNGs `图01-简短主题.png`, `图02-简短主题.png`, etc. Renaming does not permit changing visual content. Synchronize the manifest, figure numbers, captions, and Markdown references.
-- Verify every referenced file exists and every image renders in the full article; independently confirm that those are the **approved versions**. File-integrity checks do not prove visual approval.
+- Reuse the exact confirmed bytes. Before delivery, compare the semantic filename, content hash, and actual visual to the approved original; never replace an approved image with a different visual under the same semantic name without recording a new revision and obtaining approval.
+- Name PNGs by stable subject, e.g. `parameter-update.png` or `training-vs-inference.png`; do not include article-order numbers. The Markdown insertion position controls display order, so inserting a new image must not rename existing assets or change their paths.
+- Keep candidate/final state, revision, source provenance, and SHA-256 in the manifest. Verify every referenced file exists and every image renders in the full article; independently confirm that those are the **approved versions**. File-integrity checks do not prove visual approval.
 - If the user requested GitHub or publication updates, archive only confirmed artifacts and update actual publication state; never label a draft published or claim an unuploaded image is archived.
 
 **Gate E — Provenance:** exact source ↔ approved visual ↔ final asset ↔ article reference must match.
+
+## Stable semantic asset identity
+
+- An image's identity is its teaching subject and provenance, not its current position in an article. Use a descriptive semantic filename with no ordinal prefix.
+- Do not add editorial figure labels to the canvas, filenames, captions, or Markdown references. The article's source order defines visual order.
+- If a new image is inserted between existing images, add one new semantic asset and one Markdown reference at the insertion point; leave all other asset names and references unchanged.
+- Use technical numbering only when it represents real content (e.g. time step, token position, layer, dimension, or sequence index).
 
 ## LLM diagram regression checks
 
