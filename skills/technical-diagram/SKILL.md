@@ -1,7 +1,7 @@
 ---
 name: technical-diagram
 metadata:
-  version: "0.1.4"
+  version: "0.1.5"
 description: Plan, generate, revise, audit, and deliver accurate educational diagrams for technical blogs, tutorials, and AI/ML or software-engineering explainers. Use when an article needs a mechanism, data-flow, architecture, comparison, token/process, or numerical illustration; when reviewing a generated figure; or when assembling approved figures into an article. Enforce the author's chosen visual style, technical correctness, explicit approval, and source-file/version traceability.
 ---
 
@@ -53,7 +53,14 @@ Choose the lightest structure that actually teaches the subject. Do not force fo
 - Header establishes the single question; each panel has an **outcome-first mini-title**, a compact grounded example or simple mechanism, and at most a short explanation; bottom takeaway ties the causal argument together.
 - Use meaningful chips/arrows, visual contrast and occasional small icons to guide reading. Do not add ornamental charts, unrelated figures, stock-style motifs or dense boxed paragraphs merely to fill space.
 - When a comparison is visually thin, improve the explanation of *why*, the boundary condition or the controlled counterexample **before** considering additional illustrative data. Improve density without changing the scope.
-- Evaluate legibility at article width and mobile. Do not place editorial labels like `图04` on canvas.
+- Evaluate legibility at the intended display size. For James's technical blog, prioritize explanatory power and PC reading by default; do not reduce information, shrink labels, or force a portrait/mobile layout merely to fit phone screens. Mobile-specific adaptation is optional and only done when the author requests it. Do not place editorial labels like `图04` on canvas.
+
+### Display priority: explanatory power first
+
+- Choose aspect ratio and composition according to the teaching task and the amount of information needed to explain it, not according to a universal mobile-first template.
+- For this blog, PC is the default serious-learning environment. A diagram may be wide, dense, or detailed when that materially improves causal explanation, comparison, or mathematical clarity.
+- Do not split, simplify, or redesign a technically necessary relationship solely to make every label readable at a phone's default viewport width. Mobile adaptation is not a default requirement.
+- If a genuinely separate mobile version would add value, propose it as an optional second asset; do not silently replace the PC-first approved original.
 
 ### Evidence gate remains stricter than visual preference
 
