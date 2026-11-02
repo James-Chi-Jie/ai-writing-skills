@@ -148,6 +148,7 @@ See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding g
 - The Markdown document determines display order through the location of each image reference. Inserting, deleting, or moving one image must not require renaming other assets or changing their paths.
 - Track candidate/final status, revision, source provenance, and SHA-256 in the article plan or manifest, not through ordinal filenames. Use descriptive identifiers when multiple assets address related topics.
 - Preserve numbers that carry actual technical meaning, such as time steps, layer indices, sequence positions, dimensions, or measured values.
+- Each image should explain one concrete learning obstacle. Prefer accurate arrows, indices, shapes and short labels over a decorative text-heavy graphic.
 
 ## Additional rules validated during RNN V2
 
@@ -157,13 +158,6 @@ See [rnn-case-study.md](references/rnn-case-study.md) for a real understanding g
 - Clearly mark deliberate simplifications (e.g. omission of nonlinearity and bias). Distinguish exact computational traceability from the difficulty of interpreting learned semantic representations.
 - If the writer's real questions reveal a missing logical step after V1, restructure the draft at that step rather than appending unrelated extra content.
 
-### Editorial numbering versus delivered image file names
-
-- Do not use editorial sequence numbers in the canvas, asset filename, article caption, or Markdown reference. Use a stable semantic filename and let Markdown placement determine display order.
-- When adding, removing, or reordering figures, update only the relevant Markdown insertion point and its descriptive manifest entry; do not rename unrelated image assets.
-- Keep revision status, source provenance, and content hashes in the plan/manifest. Do not use figure numbers as identity or provenance.
-- Preserve meaningful technical numbers such as time steps, sequence positions, dimensions, layer indices, and measured values.
-- An image primarily exists to explain one concrete point. Prefer correct arrows, indices, shapes and simple labels over text-heavy decorative diagrams.
 ## Additional rules validated during Transformer outline and sections 1–2 (2026-10-13)
 
 ### Progressive depth without mandatory formula-first exposition
