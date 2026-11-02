@@ -114,3 +114,13 @@
 4. 去掉形容词、拟人化和悬念后，论证仍然成立吗？
 5. 读者能否复述核心机制、证据与边界，而不只是记住比喻？
 6. 若这是文章解读，能否追溯哪些是作者结论，哪些是讲解者的引申？
+
+## 开源参考与借鉴边界（2026-11-03）
+
+以下是形成这套方法时参考的公开 Skill，未直接照搬其完整提示词或强制风格：
+
+- [Good Story](https://github.com/Rimagination/good-story/blob/main/SKILL.md)：论证结构中“需求/缺口→方法→证据→新认识”与“叙事不能超过证据”。
+- [Story Explanation](https://github.com/Microck/ordinary-claude-skills/blob/main/skills_all/story-explanation/SKILL.md)：对已存在的文章选择有意义的故事框架，而非机械摘要。
+- [Anthropic Doc Co-authoring](https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md)：逐节重构与陌生读者测试思路。
+- [Blog Post Writer](https://github.com/JayRHa/agent-skills/blob/main/blog-post-writer/SKILL.md)：技术文章的具体钩子、例子和读者可执行结果。
+- [Storyteller](https://github.com/xcrrr/claude-skills/blob/main/skills/writing/storyteller/SKILL.md)：节奏和叙事张力；不引入纯文学框架作为技术讲解的刚性要求。
