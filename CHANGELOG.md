@@ -1,5 +1,11 @@
 # Changelog
 
+## Skill duplication audit - 2026-11-03
+- 核查仓库中两个入口 Skill、模板、reference、案例和 Evals：technical-explainer 负责内容解释和写作，technical-diagram 负责制图，职责不重复；reference/检查单/评测的分层保留。
+- 发现 technical-explainer 的“Semantic image naming”和 RNN V2 下“Editorial numbering versus delivered image file names”在同一文件内重复表达相同的图片命名和编号规则；已去掉后者，保留前者作为唯一规范段落，并合并一个独有的图片教学目标要求。
+- 写作门禁和配图 Skill 双侧校验属于有意交叉，不应删除；没有修改正式文章或绘图工作流。
+
+
 ## technical-explainer 0.6.0 - 2026-11-03
 - 基于 Good Story、Story Explanation、Doc Co-authoring、Blog Post Writer 等开源案例升级为**故事驱动的知识表达**；沿用现有 Skill 名称与目录以保持 personal-blog 引用兼容，不新建重复 Skill。
 - 正式区分 CREATE（文章创作）、EXPLAIN（读解原文）和 REVISE（重组与修订）。讲解原文应先核查来源，再按读者困惑重组内容，明确作者论点、证据、原型/实验边界与讲解者的延伸推断。
