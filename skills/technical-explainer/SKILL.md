@@ -1,19 +1,39 @@
 ---
 name: technical-explainer
-description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
+description: Story-driven knowledge explanation, article writing, source-article/paper interpretation, and revision. Use when asked to write an educational article, blog, tutorial or thoughtful essay; explain, teach, analyze, or retell an existing article/paper/report so the reader can understand its reasoning; or improve the narrative of technical material. Lead readers through a concrete puzzle, exploration, evidence, mechanism and limits, without inventing facts. Especially useful for AI/ML, iOS, backend and software-engineering topics; can also adapt to evidence-based general knowledge writing.
 metadata:
-  version: "0.5.5"
+  version: "0.6.0"
 ---
 
-# Technical Explainer
+# Technical Explainer — Story-Driven Knowledge Explanation
 
 ## Goal
 
-Create technically sound, understandable explanations by working backward from the reader's concrete question. Treat writing as a method for testing understanding, not just producing polished text.
+Create source-faithful, accurate, and memorable explanations by letting the reader follow how an understanding is formed. Treat writing and article explanation as methods of testing understanding, not just producing polished text. **Storytelling here means a causal learning journey, not fictional plot or emotional decoration.**
+
+## Story-first mode and task routing (v0.6.0)
+
+The default teaching strategy for **writing an article** or **explaining someone else's article** is story-driven reasoning. Read [story-driven-explanation.md](references/story-driven-explanation.md) for the detailed arc, source-grounding requirements, short-answer adaptation, and examples.
+
+**Select the work mode before applying the workflow:**
+
+- **CREATE — original article or essay:** Build one coherent reader journey: an observable situation or puzzle → fair initial hypothesis/alternative → evidence or actual constraint → new understanding/mechanism → verification and boundary. The arc is a planning model, **not** compulsory section headings. Use the author's previously established topic and tone. For reflective nonfiction, never invent personal experiences. When creating a blog with illustrations, preserve the full-text author approval gate below.
+- **EXPLAIN — interpret an existing paper, blog or report:** First access and accurately understand the source, including the authors' actual question, methods, claims, evidence and limitations. Only then reorder it around the reader's likely questions and deliver a clear narrative; explicitly separate author claims, explanatory metaphors, independent inference, and unverified assertions. Distinguish idea/prototype/measurement/production deployment. **Do not require the authoring approval gate or a figure plan just to explain an existing text.** If the source cannot be fully read, disclose what is verified.
+- **REVISE — polish or restructure supplied text:** Repair broken reasoning, missing premises and out-of-order concepts before improving style. Preserve claims and voice unless correctness requires a transparent correction.
+- **QUICK ANSWER / STRICT FORMAT:** For short questions, use a miniature arc (puzzle → useful distinction → answer) without padding. If the user explicitly requests a list, direct answer, contract comparison, code reference, exact technical spec or other non-narrative structure, honor it; storytelling must not obstruct retrieval or verification.
+
+**Narrative truth constraints:**
+
+1. Start with a real reader difficulty, not a contrived failure of an actually viable alternative; let a surprising truth be the turning point when appropriate.
+2. Each section must change what the reader can now infer; move from known input to visible action, observed result and next useful question. A story without a causal handoff is still a glossary.
+3. Use one recurring example when it helps. Label hypothetical scenes and toy computations; do not turn fictional stories, invented motives or imagined conversations into source history.
+4. Preserve primary-source numbers, conditions, dates, and negative results. Clarify what evidence shows and what it cannot prove; when a source is involved, cite it at important claims.
+5. Avoid mandatory heroes, three-act theater, melodrama, formulaic rhetorical questions and artificial cliffhangers. The reader should remember **why the mechanism works**, not merely its metaphor.
+6. Adapt narrative density to task length, stakes and audience; for safety-critical or formal work, explicit criteria, risks and instructions outrank narrative flow.
 
 ## Workflow
 
-### 1. Locate the article in its knowledge system
+### 1. Locate the article in its knowledge system (CREATE when part of a series)
 
 - Identify the prior article's central problem, result, and reusable concept.
 - Identify this article's one main problem and what the reader must learn.
@@ -22,12 +42,12 @@ Create technically sound, understandable explanations by working backward from t
 
 ### 2. Derive from the problem
 
-Structure the reasoning as:
-1. A concrete case exposes a problem.
-2. A plausible existing method is tried.
-3. Explain precisely where it falls short.
-4. Motivate the new mechanism.
-5. Verify its behavior with a minimal example.
+Use the following **optional** causal scaffold, revising its shape to match the truth:
+1. A concrete case exposes a meaningful question.
+2. A plausible existing method or reader hypothesis is considered fairly.
+3. Explain what it actually achieves and which real constraint, evidence or surprising fact matters; if it works, say so.
+4. Introduce the mechanism, choice or insight that addresses the remaining question.
+5. Verify with the smallest relevant example, source observation or experiment.
 6. State the limits and next question.
 
 Avoid term-first sections unless they are necessary for understanding.
@@ -46,7 +66,7 @@ Avoid term-first sections unless they are necessary for understanding.
 - Explicitly distinguish *learned parameters*, *per-input data*, and *temporary/internal state* where applicable.
 - Ask for author explanation/rephrasing when collaborating; if the user has already signaled understanding or asks to proceed, do not force another approval round.
 
-### 4. Make a figure-by-figure outline
+### 4. Make a figure-by-figure outline (only when planning figures for an authored article)
 
 For every planned section, specify:
 - Reader question
@@ -64,7 +84,7 @@ Do not generate a large batch of diagrams before the key mechanism and article s
 - Keep caveats proportional. Examples illustrate common uses; do not falsely state exclusivity (e.g., CNN only images, RNN only text).
 - If the reader's core question remains unanswered, revise before polishing tone.
 
-### Mandatory full-text approval gate before image generation
+### Mandatory full-text approval gate before image generation for authored articles
 
 Figure planning and actual image creation are separate stages.
 
@@ -112,6 +132,8 @@ When the author is learning the topic as part of writing, use **co-reasoning**, 
 See [tokenization-coauthoring-case.md](references/tokenization-coauthoring-case.md) for the observed failure modes, successful repairs, and evidence limitations.
 
 ## Artifacts
+
+For an EXPLAIN request, the normal deliverable is a **standalone explanation of the provided source**: the real problem, initial intuition, substantive mechanism, evidence/limitations and transferable implications. Do not turn a user's request to understand an article into a publishing workflow. For CREATE, use [article-outline.md](assets/article-outline.md) where appropriate; for both modes, use [story-driven-explanation.md](references/story-driven-explanation.md) and [writing-checklist.md](references/writing-checklist.md).
 
 Depending on the requested stage, produce a topic thesis, diagram-aware outline, section sample, full draft, diagram briefs, or revision notes. Do not repeatedly reconfirm a previously approved outline. Use [article-outline.md](assets/article-outline.md) when a structure is needed.
 
