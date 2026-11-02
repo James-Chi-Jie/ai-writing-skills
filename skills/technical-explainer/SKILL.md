@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Write or revise problem-driven technical educational articles, tutorials, and blog series. Use when the user wants to explain a technical concept from first principles, connect it to a previous article, develop an outline, create a complete draft, plan supporting diagrams, or revise text after understanding gaps are discovered. Particularly suited to AI/ML/software engineering topics.
 metadata:
-  version: "0.5.4"
+  version: "0.5.5"
 ---
 
 # Technical Explainer
@@ -31,6 +31,13 @@ Structure the reasoning as:
 6. State the limits and next question.
 
 Avoid term-first sections unless they are necessary for understanding.
+
+**Causal justification is not the same as a forced necessity claim.** Before saying that a design is needed, ask whether the reader's simpler alternative would in fact work.
+
+- If an alternative is viable, explicitly acknowledge it first, then compare the real constraints (e.g. implementation simplicity, representations, performance, batch interfaces, correctness, or maintainability). Do not invent an impossibility just to make the next technique seem inevitable.
+- Distinguish **a mathematical requirement**, **an architectural choice**, and **a conventional engineering implementation**. A teaching sequence showing a reasonable choice does not prove it was the only possible solution.
+- Trace actual data roles before claiming something “participates in computation”: identifiers/indices may select data, targets may index classes, learned vectors may enter matrix operations, and model parameters may receive gradients. Do not call a lookup index an input feature merely because it is numeric.
+- Use the author's “why not do the obvious thing?” question as a mandatory review of the explanatory premise. Revise the preceding rationale if it was false; do not merely append a disclaimer after the original incorrect motivation.
 
 ### 3. Verify the difficult concepts before drafting
 
@@ -69,11 +76,23 @@ Figure planning and actual image creation are separate stages.
 - If later prose edits materially change a figure's teaching point, numbers, labels, order, or surrounding argument, pause the affected figure work and reconfirm the changed text context before revising the image.
 - A figure brief may be drafted earlier in plain text, but **no actual image generation starts before full-text approval**.
 
-### Default delivery: no ZIP unless requested
+### Delivery format: choose by actual handoff needs
 
-- Do not create ZIP archives as a routine part of drafting, review, image generation, or handoff.
-- Deliver the requested Markdown, single HTML preview, or individual image directly.
-- Create a ZIP or other bundle only when the author explicitly asks for a package or when a specific downstream system demonstrably requires one and the author has agreed.
+- Do not generate a ZIP by habit; deliver Markdown, a single HTML preview, individual images, or a ZIP according to the actual task.
+- A ZIP is permitted when multiple files need coordinated delivery, directory structure matters, or the author asks for one. It is not required for every article.
+- Do not silently replace an author's requested output format; verify delivery is accessible in the user's client.
+### AI03 case: Token ID is an index, not a neural-network feature (2026-11-02)
+
+When explaining why a Token ID is used, do **not** assert “Token must participate in large amounts of numerical computation, so it must be turned into an integer.” The downstream matrix operations work on Embedding/hidden-state vectors, not on the literal Token text or its integer ID.
+
+- Start with the viable alternative: a string-keyed table can retrieve the very same Embedding vector.
+- Explain the common integer ID mapping as a **discrete lookup interface**: Token → stable vocabulary index → row in the Embedding parameter matrix. During language-model training, the target ID may also select the correct vocabulary class for Loss; neither use makes it a continuous Q/K/V input.
+- Explain separately why an Embedding vector is useful: an arbitrary ID has no inherent continuous linguistic geometry; the learnable vector is what participates in subsequent attention and other neural-network computations.
+- Clarify benefits narrowly: compact integer sequences, batched embedding gather, consistent vocabulary indexing at input and output. Do not claim that swapping string-keyed lookup for ID lookup changes Transformer expressivity, or that a GPU mathematically requires a Token ID.
+- **Counterfactual acceptance check**: if a string dictionary and an integer-indexed matrix return identical vectors for each position, the downstream Transformer receives the same numerical inputs and can compute the same result. If the prose says otherwise, repair the causal chain.
+
+In the referenced article, this correction belongs in the opening Token ID / Embedding section, **not** as an unrelated footnote at the end. See [tests 11–12](../../evals/technical-explainer.md) for regression scenarios. This case is validated as an identified error and corrected explanation in author collaboration, **not** yet validated through unfamiliar-reader or cross-topic testing.
+
 ### 6. Validate and revise
 
 Check technical correctness, reader comprehension, figure logic, cross-article linkage, and the transition to the next topic. Use [writing-checklist.md](references/writing-checklist.md). After the author raises a new question, map the misunderstanding to the right section and update both prose and relevant figure rather than treating it as an unrelated Q&A.
