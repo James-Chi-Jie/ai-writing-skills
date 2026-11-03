@@ -1,62 +1,74 @@
-# AI Writing Skills
+# AI Writing Skills — Skill Graph
 
-从真实的协作写作、原文讲解与修订中，积累可复用的 Agent Skills。**核心目标：让读者跟着有依据的故事线索，真正理解知识是如何形成的，而不只是接收结论。**
+从真实的研究、教学、技术写作与配图协作中提炼可复用的 Skills。**先根据任务目标选择能力，再在需要时沿依赖边调用下一项；不要让一个 Skill 承担互不相同的研究、教学、表达和作图职责。**
 
-## 设计原则
+## Skill Graph
 
-- **故事驱动的知识解释**：从真实困惑切入，沿着合理猜测、关键发现、机制和证据推进；不为了戏剧效果虚构困难或事实。
-- **知识连续**：明确本篇与已有知识的关系，不制造错误的技术演进叙事。
-- **先核查再讲故事**：重要原理通过最小例子、数值验证或代码先被作者理解；热点论文要单独检查先行方案、实验对照条件和收益代价，不能把传播热度误当创新证明。
-- **图文分工**：每张图必须回答一个明确问题，技术准确性优先于装饰。
-- **以真实反馈迭代**：将创作中的理解缺口转化为测试案例和规则，而非堆积个人随想。
+```mermaid
+flowchart TD
+  Q[User request] --> I{Task intent}
+  I -->|Understand / write a concept| T[technical-explainer]
+  I -->|Critically review a paper or article| R[research-analyst]
+  R -->|Need mechanism teaching| T
+  R -.->|Optional presentation| S[shared/communication/storytelling]
+  T -.->|Optional presentation| S
+  T -->|Authored article, full text approved| D[technical-diagram]
+```
 
-## 当前 Skills
+**Nodes (canonical entry points)**
 
-- [`technical-explainer`](skills/technical-explainer/SKILL.md) **v0.6.1（故事驱动 + 独立审查）**：兼容已有名称和路径；现可用于技术文章/知识随笔创作、已有论文或文章的故事式解读、修订与审稿；负责全文结构和插图教学目标。方法详见 [story-driven-explanation.md](skills/technical-explainer/references/story-driven-explanation.md)。
-- [`technical-diagram`](skills/technical-diagram/SKILL.md)：技术原理图设计、生图、技术审图、作者确认与版本来源追溯。
+| Node | Responsibility | Trigger |
+|---|---|---|
+| [`research-analyst`](skills/research-analyst/SKILL.md) | Source study, prior-art comparison, baseline and evidence auditing, independent judgment | “看看这篇论文新在哪里”“文章是否值得关注”“实验可靠么” |
+| [`technical-explainer`](skills/technical-explainer/SKILL.md) | Teaching from reader questions, minimal examples, original educational writing and explanatory revisions | “为什么这样设计”“帮我写一篇 Transformer 科普”“这里我不理解” |
+| [`shared/communication/storytelling`](shared/communication/storytelling.md) | Optional reader-oriented expression, narrative coherence, calibrated examples and metaphors | Referenced by research or teaching, **not** a standalone task Skill |
+| [`technical-diagram`](skills/technical-diagram/SKILL.md) | Image briefs, technical diagram generation, audit, author acceptance and provenance | Only for actual figures after authored full-text confirmation |
 
-## 目录结构
+**Key edges**
+
+- **RESEARCH → TEACH:** The verdict and checked evidence remain unchanged while a difficult mechanism is re-explained.
+- **TEACH / RESEARCH → COMMUNICATE:** Storytelling determines clarity and pacing **after** the owning Skill has established or appropriately qualified facts; not all outputs need a story.
+- **TEACH → DIAGRAM:** For authored blog posts, the author must approve the complete text before generation or image editing; an article analysis does not initiate drawing.
+- **REVISE:** If the issue is missing research evidence, route to RESEARCH; if the problem is a reader's understanding, route to TEACH.
+
+## Why the separation matters
+
+`technical-explainer` optimizes for **reader understanding**; `research-analyst` optimizes for **correct evaluation of external work**. They can run sequentially but should not silently replace each other. A well-structured story can still be misleading if a benchmark baseline is weak or prior art is ignored.
+
+## Directory
 
 ```text
 skills/
+  research-analyst/
+    SKILL.md
+    references/research-review-checklist.md
+    assets/analysis-outline.md
   technical-explainer/
     SKILL.md
     references/
       writing-checklist.md
       rnn-case-study.md
-      story-driven-explanation.md
-    assets/
-      article-outline.md
+      tokenization-coauthoring-case.md
+      story-driven-explanation.md   # backward-compatible pointer only
+    assets/article-outline.md
   technical-diagram/
     SKILL.md
-    references/
-      acceptance-and-provenance.md
-
+    references/acceptance-and-provenance.md
+shared/
+  communication/storytelling.md
 evals/
+  research-analyst.md
   technical-explainer.md
   technical-diagram.md
 CHANGELOG.md
 ```
 
-## 未来候选能力（未实现）
+## Collaboration & validation
 
-只有当真实项目中反复出现独立、可测试的任务时才拆分，例如：`health-education-writing`、`platform-adaptation`、`fact-checking`。技术配图已基于真实 LLM 图文审查案例独立为 `technical-diagram`。
+1. Read the canonical Skill for the request, plus only its relevant shared references and dependencies.
+2. Before adding a rule, turn a real failure into a regression test in the owning Skill's `evals/` file.
+3. Update the narrowest canonical rule, preserve historical case studies and avoid cross-Skill duplication.
+4. Re-check the original failure plus a different-topic task. **Adding tests is not equivalent to passing tests.**
+5. Document changes in [CHANGELOG.md](CHANGELOG.md) and verify that entrypoint links still resolve.
 
-## 使用说明
-
-本仓库遵循 [Agent Skills](https://agentskills.io/specification) 的 `SKILL.md` 格式。将相应 Skill 目录配置到支持 Agent Skills 的工具中，或明确让 AI 读取相应文件。**仅创建 GitHub 仓库不会让所有 ChatGPT 会话自动加载这些规范**；具体接入方式取决于所用的客户端/插件。
-
-## 改进流程
-
-1. 记录真实任务及输出中出现的缺陷（包括文章创作与别人的文章解读）。
-2. 先将缺陷写成可检验的测试案例。
-3. 修改最相关的 Skill 或 reference，而不是到处复制规则。
-4. 在原测试案例和一个新的任务上验证。
-5. 更新 `CHANGELOG.md`，再合并到主分支。
-
-## 如何使用故事驱动能力
-
-- **写文章**：“帮我写/修改一篇关于 X 的文章，用真实问题驱动理解。”→ 用 CREATE 模式，从读者的困惑、探索、关键转折、机制、验证来组织，不照搬固定的五个章节；如要配图，仍需先完整正文经作者批准。
-- **讲解别人文章**：“帮我看一下这篇论文/文章讲了什么，并讲给我听。”→ 用 EXPLAIN 模式，先读取和核查原文，再按读者理解路径讲解；标注作者实证、解释者类比与个人推论。**单纯讲解无需进入博客配图和发布门禁。**
-- **短解释/固定格式**：保持短回答或用户指定的表格清单，故事只是思路，不强制长篇结构。
-- **现有项目兼容**：保留 `technical-explainer` 标识及路径，不新建功能重复的 Skill；`personal-blog/AGENTS.md` 继续引用它。
+This repository follows the [Agent Skills specification](https://agentskills.io/specification). **Keeping files on GitHub does not automatically install or load them into every ChatGPT conversation.** A supported client needs to explicitly load the Skill, or a project instruction (e.g. `personal-blog/AGENTS.md`) should route the assistant to fetch the current canonical files.
