@@ -1,35 +1,27 @@
 ---
 name: technical-explainer
-description: Story-driven knowledge explanation, article writing, source-article/paper interpretation, and revision. Use when asked to write an educational article, blog, tutorial or thoughtful essay; explain, teach, analyze, or retell an existing article/paper/report so the reader can understand its reasoning; or improve the narrative of technical material. Lead readers through a concrete puzzle, exploration, evidence, mechanism and limits, without inventing facts. Especially useful for AI/ML, iOS, backend and software-engineering topics; can also adapt to evidence-based general knowledge writing.
+description: Teach, explain and write educational articles and technical tutorials from first principles; diagnose reader misconceptions, compare viable intuitions, and verify mechanisms with minimal worked examples. Use for concept questions, learning-oriented articles, blog series and explanatory revisions. For critical analysis of an existing technical paper, claimed innovation, benchmarks or industry reports, route first to research-analyst rather than assuming this teaching workflow.
 metadata:
-  version: "0.6.1"
+  version: "0.7.0"
 ---
 
-# Technical Explainer — Story-Driven Knowledge Explanation
+# Technical Explainer — Teaching and Educational Writing
 
 ## Goal
 
-Create source-faithful, accurate, and memorable explanations by letting the reader follow how an understanding is formed. Treat writing and article explanation as methods of testing understanding, not just producing polished text. **Storytelling here means a causal learning journey, not fictional plot or emotional decoration.**
+Help readers **understand a mechanism and reproduce the reasoning** behind it. Create accurate educational explanations and articles; treat writing as a method of testing comprehension. Storytelling is an optional presentation technique, not a substitute for technical correctness.
 
-## Story-first mode and task routing (v0.6.1)
+## Scope and Skill Graph handoff (v0.7.0)
 
-The default teaching strategy for **writing an article** or **explaining someone else's article** is story-driven reasoning. Read [story-driven-explanation.md](references/story-driven-explanation.md) for the detailed arc, source-grounding requirements, short-answer adaptation, and examples.
+This Skill owns **TEACH** (understanding a concept) and **CREATE/REVISE** (educational writing). Read the shared [storytelling and communication guide](../../shared/communication/storytelling.md) when a narrative helps comprehension; do not treat its beats as required headings.
 
-**Select the work mode before applying the workflow:**
+- **TEACH:** Work backward from the reader's actual knowledge gap. Consider a reasonable simpler hypothesis first; trace inputs, actions, outputs, constraints and a minimal verification. When the user says “still don't understand,” repair the missing premise instead of expanding the glossary.
+- **CREATE / educational REVISE:** Plan the reader's knowledge journey, write accurate and natural prose, verify hard claims, and respect the author's full-text approval gate **before any actual blog image generation**. Personal nonfiction must not invent the author's experiences.
+- **Critical source review:** Questions about an **existing paper/article's novelty, experimental evidence, benchmark, market reception or relative value** belong first to [research-analyst](../research-analyst/SKILL.md). A user asking “这篇论文讲了什么？” typically needs a source-faithful research reading before deciding if a concept needs teaching. If a research output leaves an unfamiliar mechanism, return here to teach that specific mechanism.
+- **Short or structured requests:** Be concise; do not force a story on a glossary definition, table, code answer, contract analysis or a three-sentence question.
+- **Figures:** Use [technical-diagram](../technical-diagram/SKILL.md) only when producing figures for an authored article and after the confirmed full-text gate. Research-only discussion does not authorize actual image production.
 
-- **CREATE — original article or essay:** Build one coherent reader journey: an observable situation or puzzle → fair initial hypothesis/alternative → evidence or actual constraint → new understanding/mechanism → verification and boundary. The arc is a planning model, **not** compulsory section headings. Use the author's previously established topic and tone. For reflective nonfiction, never invent personal experiences. When creating a blog with illustrations, preserve the full-text author approval gate below.
-- **EXPLAIN — interpret an existing paper, blog or report:** First access and accurately understand the source, including the authors' actual question, methods, claims, evidence and limitations. Only then reorder it around the reader's likely questions and deliver a clear narrative; explicitly separate author claims, explanatory metaphors, independent inference, and unverified assertions. Distinguish idea/prototype/measurement/production deployment. **Do not require the authoring approval gate or a figure plan just to explain an existing text.** If the source cannot be fully read, disclose what is verified. **For new, viral, benchmarked, or innovation-claiming work, first perform the independent comparison and baseline audit in the reference; narrative fluency must never conceal weak baselines, prior art or costs.**
-- **REVISE — polish or restructure supplied text:** Repair broken reasoning, missing premises and out-of-order concepts before improving style. Preserve claims and voice unless correctness requires a transparent correction.
-- **QUICK ANSWER / STRICT FORMAT:** For short questions, use a miniature arc (puzzle → useful distinction → answer) without padding. If the user explicitly requests a list, direct answer, contract comparison, code reference, exact technical spec or other non-narrative structure, honor it; storytelling must not obstruct retrieval or verification.
-
-**Narrative truth constraints:**
-
-1. Start with a real reader difficulty, not a contrived failure of an actually viable alternative; let a surprising truth be the turning point when appropriate.
-2. Each section must change what the reader can now infer; move from known input to visible action, observed result and next useful question. A story without a causal handoff is still a glossary.
-3. Use one recurring example when it helps. Label hypothetical scenes and toy computations; do not turn fictional stories, invented motives or imagined conversations into source history.
-4. Preserve primary-source numbers, conditions, dates, and negative results. Clarify what evidence shows and what it cannot prove; when a source is involved, cite it at important claims.
-5. Avoid mandatory heroes, three-act theater, melodrama, formulaic rhetorical questions and artificial cliffhangers. The reader should remember **why the mechanism works**, not merely its metaphor.
-6. Adapt narrative density to task length, stakes and audience; for safety-critical or formal work, explicit criteria, risks and instructions outrank narrative flow.
+Keep **factual analysis → comprehension teaching → presentation → diagrams** as distinct responsibilities, linking them only when the current request genuinely needs them. No Skill should pretend to do another Skill's evidence audit.
 
 ## Workflow
 
@@ -133,7 +125,7 @@ See [tokenization-coauthoring-case.md](references/tokenization-coauthoring-case.
 
 ## Artifacts
 
-For an EXPLAIN request, the normal deliverable is a **standalone explanation of the provided source**: the real problem, initial intuition, substantive mechanism, evidence/limitations and transferable implications. Do not turn a user's request to understand an article into a publishing workflow. For CREATE, use [article-outline.md](assets/article-outline.md) where appropriate; for both modes, use [story-driven-explanation.md](references/story-driven-explanation.md) and [writing-checklist.md](references/writing-checklist.md).
+For TEACH and CREATE, use [article-outline.md](assets/article-outline.md) as needed and [writing-checklist.md](references/writing-checklist.md) for acceptance. Apply the [shared communication guide](../../shared/communication/storytelling.md) only when appropriate. For an existing paper needing independent evaluation, hand off to [research-analyst](../research-analyst/SKILL.md); do not recast a critical-reading request as an authored blog.
 
 Depending on the requested stage, produce a topic thesis, diagram-aware outline, section sample, full draft, diagram briefs, or revision notes. Do not repeatedly reconfirm a previously approved outline. Use [article-outline.md](assets/article-outline.md) when a structure is needed.
 
