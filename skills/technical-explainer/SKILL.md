@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Story-driven knowledge explanation, article writing, source-article/paper interpretation, and revision. Use when asked to write an educational article, blog, tutorial or thoughtful essay; explain, teach, analyze, or retell an existing article/paper/report so the reader can understand its reasoning; or improve the narrative of technical material. Lead readers through a concrete puzzle, exploration, evidence, mechanism and limits, without inventing facts. Especially useful for AI/ML, iOS, backend and software-engineering topics; can also adapt to evidence-based general knowledge writing.
 metadata:
-  version: "0.6.0"
+  version: "0.6.1"
 ---
 
 # Technical Explainer — Story-Driven Knowledge Explanation
@@ -11,14 +11,14 @@ metadata:
 
 Create source-faithful, accurate, and memorable explanations by letting the reader follow how an understanding is formed. Treat writing and article explanation as methods of testing understanding, not just producing polished text. **Storytelling here means a causal learning journey, not fictional plot or emotional decoration.**
 
-## Story-first mode and task routing (v0.6.0)
+## Story-first mode and task routing (v0.6.1)
 
 The default teaching strategy for **writing an article** or **explaining someone else's article** is story-driven reasoning. Read [story-driven-explanation.md](references/story-driven-explanation.md) for the detailed arc, source-grounding requirements, short-answer adaptation, and examples.
 
 **Select the work mode before applying the workflow:**
 
 - **CREATE — original article or essay:** Build one coherent reader journey: an observable situation or puzzle → fair initial hypothesis/alternative → evidence or actual constraint → new understanding/mechanism → verification and boundary. The arc is a planning model, **not** compulsory section headings. Use the author's previously established topic and tone. For reflective nonfiction, never invent personal experiences. When creating a blog with illustrations, preserve the full-text author approval gate below.
-- **EXPLAIN — interpret an existing paper, blog or report:** First access and accurately understand the source, including the authors' actual question, methods, claims, evidence and limitations. Only then reorder it around the reader's likely questions and deliver a clear narrative; explicitly separate author claims, explanatory metaphors, independent inference, and unverified assertions. Distinguish idea/prototype/measurement/production deployment. **Do not require the authoring approval gate or a figure plan just to explain an existing text.** If the source cannot be fully read, disclose what is verified.
+- **EXPLAIN — interpret an existing paper, blog or report:** First access and accurately understand the source, including the authors' actual question, methods, claims, evidence and limitations. Only then reorder it around the reader's likely questions and deliver a clear narrative; explicitly separate author claims, explanatory metaphors, independent inference, and unverified assertions. Distinguish idea/prototype/measurement/production deployment. **Do not require the authoring approval gate or a figure plan just to explain an existing text.** If the source cannot be fully read, disclose what is verified. **For new, viral, benchmarked, or innovation-claiming work, first perform the independent comparison and baseline audit in the reference; narrative fluency must never conceal weak baselines, prior art or costs.**
 - **REVISE — polish or restructure supplied text:** Repair broken reasoning, missing premises and out-of-order concepts before improving style. Preserve claims and voice unless correctness requires a transparent correction.
 - **QUICK ANSWER / STRICT FORMAT:** For short questions, use a miniature arc (puzzle → useful distinction → answer) without padding. If the user explicitly requests a list, direct answer, contract comparison, code reference, exact technical spec or other non-narrative structure, honor it; storytelling must not obstruct retrieval or verification.
 
