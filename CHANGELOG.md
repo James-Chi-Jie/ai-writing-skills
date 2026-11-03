@@ -1,5 +1,11 @@
 # Changelog
 
+## technical-explainer 0.6.1 - 2026-11-03
+- 复盘 DeepSeek Super-agent 首轮讲解：虽然介绍了组件与实验数字，却未先对比既有 Supervisor / Worker 系统，且遗漏实验基线是否真正调用 Subagent、成本等足以改变结论的条件。失误属于“事实摘录部分正确但整体判断可能误导”。
+- EXPLAIN 增加独立审查门禁：热门/创新性技术文章在故事化之前，核对先行方案、基线有效性、实验配置、成本收益和传播证据；区分原创、工程集成与研究设想。
+- 新增测试 19–22，覆盖创新审查、实验对照有效性、热点归因与读者已有知识。**当前仅完成规则写入、案例重查和静态检查，尚未完成跨文章、盲测或自动回归评测**。
+
+
 ## Skill duplication audit - 2026-11-03
 - 核查仓库中两个入口 Skill、模板、reference、案例和 Evals：technical-explainer 负责内容解释和写作，technical-diagram 负责制图，职责不重复；reference/检查单/评测的分层保留。
 - 发现 technical-explainer 的“Semantic image naming”和 RNN V2 下“Editorial numbering versus delivered image file names”在同一文件内重复表达相同的图片命名和编号规则；已去掉后者，保留前者作为唯一规范段落，并合并一个独有的图片教学目标要求。
