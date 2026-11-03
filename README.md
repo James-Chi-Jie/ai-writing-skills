@@ -6,13 +6,13 @@
 
 - **故事驱动的知识解释**：从真实困惑切入，沿着合理猜测、关键发现、机制和证据推进；不为了戏剧效果虚构困难或事实。
 - **知识连续**：明确本篇与已有知识的关系，不制造错误的技术演进叙事。
-- **先理解再成稿**：重要原理通过最小例子、数值验证或代码先被作者理解。
+- **先核查再讲故事**：重要原理通过最小例子、数值验证或代码先被作者理解；热点论文要单独检查先行方案、实验对照条件和收益代价，不能把传播热度误当创新证明。
 - **图文分工**：每张图必须回答一个明确问题，技术准确性优先于装饰。
 - **以真实反馈迭代**：将创作中的理解缺口转化为测试案例和规则，而非堆积个人随想。
 
 ## 当前 Skills
 
-- [`technical-explainer`](skills/technical-explainer/SKILL.md) **v0.6.0（故事驱动）**：兼容已有名称和路径；现可用于技术文章/知识随笔创作、已有论文或文章的故事式解读、修订与审稿；负责全文结构和插图教学目标。方法详见 [story-driven-explanation.md](skills/technical-explainer/references/story-driven-explanation.md)。
+- [`technical-explainer`](skills/technical-explainer/SKILL.md) **v0.6.1（故事驱动 + 独立审查）**：兼容已有名称和路径；现可用于技术文章/知识随笔创作、已有论文或文章的故事式解读、修订与审稿；负责全文结构和插图教学目标。方法详见 [story-driven-explanation.md](skills/technical-explainer/references/story-driven-explanation.md)。
 - [`technical-diagram`](skills/technical-diagram/SKILL.md)：技术原理图设计、生图、技术审图、作者确认与版本来源追溯。
 
 ## 目录结构
