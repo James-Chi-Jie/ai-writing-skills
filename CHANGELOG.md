@@ -1,5 +1,16 @@
 # Changelog
 
+## Skill Graph refactor — 2026-11-03
+
+- 确认研究型文章解读与科普教学属于不同目标，分拆职责而非继续扩展一个万能 `technical-explainer`。
+- 新增 `research-analyst` v0.1.0（原文读取、先行方案、基线有效性、证据与成本判断）、专属研究清单、研究模板和 8 个手工回归案例。
+- `technical-explainer` 升级至 v0.7.0，回归教学、解释、教育文章创作与修订；研究型请求通过显式边交给 research-analyst，不再由教学 Skill 自行兼任。
+- 新增 `shared/communication/storytelling.md` 作为**非 Skill**的可选表达层，不要求研究报告采用五幕故事。旧 `references/story-driven-explanation.md` 留为兼容指针，避免维护两份方法正文。
+- 把原教学评测中的研究用例 13、17、19–22 迁入独立的 `evals/research-analyst.md`；教学侧保留教学与创作案例。研究模板和核查清单不再混放在教学资料中。
+- README 定义显式 Skill Graph 及节点间路由；`personal-blog/AGENTS.md` 已同步按任务目的载入研究/教学/配图与共享表达引用，未改变博客正文全文确认后制图、发布审批等既有约束。
+- 验证状态：已核对核心文档和路径规则并完成结构迁移；**没有进行真实论文跨领域盲测，也未建立自动化 Skill 路由执行器**。GitHub 中的 Skill Graph 是书面路由协议，不等于客户端已自动加载。
+
+
 ## technical-explainer 0.6.1 - 2026-11-03
 - 复盘 DeepSeek Super-agent 首轮讲解：虽然介绍了组件与实验数字，却未先对比既有 Supervisor / Worker 系统，且遗漏实验基线是否真正调用 Subagent、成本等足以改变结论的条件。失误属于“事实摘录部分正确但整体判断可能误导”。
 - EXPLAIN 增加独立审查门禁：热门/创新性技术文章在故事化之前，核对先行方案、基线有效性、实验配置、成本收益和传播证据；区分原创、工程集成与研究设想。
