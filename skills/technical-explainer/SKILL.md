@@ -2,7 +2,7 @@
 name: technical-explainer
 description: Teach, explain and write educational articles and technical tutorials from first principles; diagnose reader misconceptions, compare viable intuitions, and verify mechanisms with minimal worked examples. Use for concept questions, learning-oriented articles, blog series and explanatory revisions. For critical analysis of an existing technical paper, claimed innovation, benchmarks or industry reports, route first to research-analyst rather than assuming this teaching workflow.
 metadata:
-  version: "0.7.0"
+  version: "0.8.0"
 ---
 
 # Technical Explainer — Teaching and Educational Writing
@@ -11,7 +11,7 @@ metadata:
 
 Help readers **understand a mechanism and reproduce the reasoning** behind it. Create accurate educational explanations and articles; treat writing as a method of testing comprehension. Storytelling is an optional presentation technique, not a substitute for technical correctness.
 
-## Scope and Skill Graph handoff (v0.7.0)
+## Scope and Skill Graph handoff (v0.8.0)
 
 This Skill owns **TEACH** (understanding a concept) and **CREATE/REVISE** (educational writing). Read the shared [storytelling and communication guide](../../shared/communication/storytelling.md) when a narrative helps comprehension; do not treat its beats as required headings.
 
@@ -75,6 +75,20 @@ Do not generate a large batch of diagrams before the key mechanism and article s
 - Avoid self-congratulatory conclusions, unnatural transitions, and repetitive rhetorical questions.
 - Keep caveats proportional. Examples illustrate common uses; do not falsely state exclusivity (e.g., CNN only images, RNN only text).
 - If the reader's core question remains unanswered, revise before polishing tone.
+
+### Optimize for low reading cost, not minimum length
+
+The editorial target is **Low Reading Cost, Not Short Writing**. Do not optimize for the fewest words or impose a short-article quota. Optimize for how easily a reader can locate the point, follow the reasoning, and decide which details deserve attention.
+
+- **Orient the reader early.** State the central problem, why it matters, and what the article will help the reader understand. When the reader arrives with a concrete practical question, put the direct answer near the beginning. When the article needs a causal derivation, give a concise mental model or destination first, then show why it is true. Do not hide the answer merely to manufacture suspense.
+- **Keep one main thread.** Organize the article around one primary question. Reuse a stable example where possible, and change one important variable at a time. Introduce a new scenario only when the existing one cannot express the next idea clearly.
+- **Make every paragraph earn its place.** A paragraph should answer a sub-question, establish a necessary premise, explain an operation, verify a claim, state a consequential limitation, or connect the reasoning to the next step. Remove repeated conclusions, decorative transitions, and background the reader already knows.
+- **Layer depth instead of deleting rigor.** Keep the steps required to understand and verify the central mechanism in the main line. Move genuinely optional implementation detail, advanced variants, or secondary derivations into a clearly marked aside, appendix, or later article when they interrupt the main path. Do not compress several reasoning steps into jargon or remove a qualification that changes the conclusion.
+- **Control scope deliberately.** Mention adjacent technologies only to explain a necessary boundary or point to the next question. Do not turn one article into a catalogue of every related technique. Explain the current problem first; defer the detailed treatment of neighboring solutions to the place where their trade-offs matter.
+- **Make the structure skimmable, not decorative.** Headings should tell the reader what question a section answers or what conclusion it establishes. Use a table, diagram, or summary only when it reduces comparison or memory effort; avoid repeating the same conclusion in prose, a callout, and a final summary.
+- **Use the no-patience-reader check.** A reader should be able to scan the title, opening, and headings to understand the article's destination; while reading, they should know what each section adds and why the next one is needed. If a long article is necessary, make its path clear rather than making it artificially short.
+
+**Acceptance boundary:** Low reading cost means less unnecessary effort, not less necessary information. A draft may remain long when the mechanism requires it; it fails when readers must do the author's work of finding the answer, connecting scattered premises, or filtering unrelated material.
 
 ### Mandatory full-text approval gate before image generation for authored articles
 
